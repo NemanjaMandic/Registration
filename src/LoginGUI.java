@@ -85,7 +85,7 @@ public class LoginGUI extends javax.swing.JFrame {
         String pass = new String(passTxt.getPassword());
        
         DBClass db = new DBClass();
-       if(db.checkLogin(usernameTxt.getText(),pass )){
+       if(db.checkLogin(usernameTxt.getText(),pass) == true){
            JOptionPane.showMessageDialog(null, "Hohoho pa gde si "+usernameTxt.getText()+" care");
        }
     }//GEN-LAST:event_loginBtnActionPerformed
