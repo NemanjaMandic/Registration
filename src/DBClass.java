@@ -1,6 +1,7 @@
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
@@ -27,5 +28,25 @@ public class DBClass {
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
+    }
+    public boolean checkLogin(String username, String password){
+        boolean check = false;
+        
+        try{
+            
+           Statement st = conn.createStatement();
+           String sql = "SELECT * FROM tblProfile WHERE username = '" + username+"' AND password = '" + password+"'";
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                check = true;
+            }
+            if(check == false){
+                System.out.println("Login is not correct");
+            }
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return check;
     }
 }
